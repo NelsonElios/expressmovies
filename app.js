@@ -31,20 +31,7 @@ server.get('/movies/add' ,
 
 //let movieTitre;
 
-server.post('/movies',
-    (req, res) => {
-    const newMovie = {
-        title: req.body.movie,
-        year : req.body.year,
-    };
-    movies = [...movies,newMovie];
 
-            console.log(movies);
-        }
-
-
-
-)
 
 server.get('/movies',
     (req ,res) => {
@@ -63,11 +50,27 @@ server.get('/movies',
          }
 
         ];
-    res.render('movies',{films: movies,movieTitre: null});
+    res.render('movies',{films: movies});
 
     }
     );
 
+server.post('/movies',
+    (req, res) => {
+        const newMovie = {
+            title: req.body.movie,
+            year : req.body.year,
+        };
+        movies = [...movies,newMovie];
+        res.sendStatus(201);
+
+        console.log(movies);
+        //res.render('movies');
+    }
+
+
+
+)
 //var urlencoded = bodyParser.urlencoded({extend:false});
 
 

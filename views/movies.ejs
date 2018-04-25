@@ -10,29 +10,61 @@
 <div class="central" >
 <% include ./partials/header.ejs%>
 <p>hello world</p>
-    <div>
+    <div class="moviesDiv">
         <%for(film of films) { %>
-        <p><%= film.year %> </p>
-
+        <p><%= film.title %> : <%= film.year %></p>
         <%}%>
     </div>
     <br>
     <form action="/movies" method="post">
         <label for="movie">Movie</label>
-        <input type="text" name="movie">
+        <input type="text" name="movie" id="movie">
         <label for="year">Année de sortie</label>
-        <input type="text" name="year">
+        <input type="text" name="yearOut" id="yearOut">
 
         <button type="submit">Ajouter</button>
     </form>
 </div>
-<% if(movieTitre){%>
-
-<%}%>
-<div>
-    <%= movieTitre %>
-</div>
 
 <% include ./partials/footer.ejs%>
+<script>
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', addMovie);
+
+    function addMovie(event) {
+        event.preventDefault();
+
+        if(fetch) {
+            fetch('/movies',
+                {
+                    method: 'POST',
+                    body: new FormData(form)
+                }).then(checkStatus)
+                .catch(
+                    error => {
+                        console.error('erreur'+error);
+                    }
+                );
+
+        }
+
+    }
+
+    function checkStatus(reponse) {
+        if(reponse.status<200 && reponse.status>300) {
+
+            let newDiv = document.createElement('div');
+            const movieTitle = document.getElementById('movie').value;
+            const year = document.getElementById('yearOut').value;
+            newDiv.innerHTML = `${movieTitle} ${year}`;
+            document.querySelector('.moviesDiv').appendChild(newDiv);
+            form.reset();
+
+        }
+    }
+
+</script>
 </body>
+
 </html>

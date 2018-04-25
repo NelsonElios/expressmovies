@@ -16,7 +16,7 @@
         <%}%>
     </div>
     <br>
-    <form action="/movies" method="post">
+    <form action="/movies" method="post" id="formulaire">
         <label for="movie">Movie</label>
         <input type="text" name="movie" id="movie">
         <label for="year">Année de sortie</label>
@@ -28,8 +28,8 @@
 
 <% include ./partials/footer.ejs%>
 <script>
-
-    const form = document.querySelector('form');
+    //const form = document.getElementById('formulaire');
+   const form = document.querySelector('form'); //recupere un element grace à sa classe ou son type
     form.addEventListener('submit', addMovie);
 
     function addMovie(event) {
@@ -52,7 +52,7 @@
     }
 
     function checkStatus(reponse) {
-        if(reponse.status<200 && reponse.status>300) {
+        if(reponse.status>= 200 && reponse.status< 300) {
 
             let newDiv = document.createElement('div');
             const movieTitle = document.getElementById('movie').value;

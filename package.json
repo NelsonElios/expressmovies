@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/NelsonElios/expressmovies/issues"
   },
-  "homepage": "https://github.com/NelsonElios/expressmovies#readme"
+  "homepage": "https://github.com/NelsonElios/expressmovies#readme",
+  "dependencies": {
+    "ejs": "^2.5.9",
+    "express": "^4.16.3"
+  }
 }

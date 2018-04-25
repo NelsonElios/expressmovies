@@ -7,11 +7,15 @@
 </head>
 
 <body>
-
+<div class="central">
+<% include ./partials/header.ejs%>
 <p>hello world !this is details of movies</p>
 <div>
     <%= movieId %>
 
 </div>
+
+</div>
+<% include ./partials/footer %> <!-- permet de faire une inclusion d'un template dans un autre -->
 </body>
 </html>

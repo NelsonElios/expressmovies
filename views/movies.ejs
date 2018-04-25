@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="FR-fr">
+<head>
+    <meta charset="UTF-8">
+    <title> movies</title>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="central" >
+<% include ./partials/header.ejs%>
+<p>hello world</p>
+    <div>
+        <%for(film of films) { %>
+        <p><%= film.year %> </p>
+
+        <%}%>
+    </div>
+    <br>
+    <form action="/movies" method="post">
+        <label for="movie">Movie</label>
+        <input type="text" name="movie">
+        <label for="year">Année de sortie</label>
+        <input type="text" name="year">
+
+        <button type="submit">Ajouter</button>
+    </form>
+</div>
+<% if(movieTitre){%>
+
+<%}%>
+<div>
+    <%= movieTitre %>
+</div>
+
+<% include ./partials/footer.ejs%>
+</body>
+</html>

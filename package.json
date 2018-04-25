@@ -1,0 +1,19 @@
+{
+  "name": "expressmovies",
+  "version": "1.0.0",
+  "description": "back application for movies",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NelsonElios/expressmovies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NelsonElios/expressmovies/issues"
+  },
+  "homepage": "https://github.com/NelsonElios/expressmovies#readme"
+}

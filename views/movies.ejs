@@ -32,7 +32,7 @@
    const form = document.querySelector('form'); //recupere un element grace à sa classe ou son type
     form.addEventListener('submit', addMovie);
 
-    function addMovie(event) {
+    function addMovie(event) {// la fonction evenement a appelé pour le formulaire
         event.preventDefault();
 
         if(fetch) {

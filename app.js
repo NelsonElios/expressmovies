@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const multer = require('multer');
+const upload = multer();
 const PORT =3000;
 const server = express();
 let movies = [];
@@ -52,10 +53,33 @@ server.get('/movies',
         ];
     res.render('movies',{films: movies});
 
+
     }
     );
 
-server.post('/movies',
+server.post('/movies', upload.fields([]),
+    (req, res) => {
+    if(!req.body){
+        return res.status(500);
+    }
+    else {
+        const formData = req.body;
+        console.log(formData);
+        const newMovie = { title: req.body.title, year: req.body.year};
+        movies = [...movies, newMovie];
+        res.sendStatus(201);
+
+    }
+
+}
+);
+
+server.get('/movie-search',
+    (req, res) => {
+    res.render('movie-search');
+    }
+    )
+/*server.post('/movies',
     (req, res) => {
         const newMovie = {
             title: req.body.movie,
@@ -66,11 +90,11 @@ server.post('/movies',
 
         console.log(movies);
         //res.render('movies');
-    }
+    }*/
 
 
 
-)
+//)
 //var urlencoded = bodyParser.urlencoded({extend:false});
 
 
